@@ -1,1 +1,2 @@
 # Blogger
+Vietrick Blogger resources.
