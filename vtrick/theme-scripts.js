@@ -1,3 +1,25 @@
+
+/*! Anchor Jumping */
+var target = window.location.hash.replace('#', '');
+window.location.hash = "";// delete hash so the page won't scroll to it
+$(window).on('load', function() {
+	target&&$("html, body").animate({scrollTop:$("#"+target).offset().top},700,"swing",function(){});
+	$('a[href*="#"]:not(".tocify-wrap a")').on("click",function(h){let e=this.hash,t=new URL(this.href),o=new URL(window.location.href);t.hash="",o.hash="",e&&$(e).length&&t.href==o.href&&(h.preventDefault(),$("html, body").animate({scrollTop:$(e).offset().top-10},750))});
+});
+
+
+function copyFunction(){
+document.getElementById("getlink").style.display="inline-block";
+document.getElementById("getlink").select(),document.execCommand("copy");
+document.getElementById("getlink").style.display="none";
+
+document.getElementById("LinkCopy").classList.add('copied');
+
+setTimeout(function () {
+            document.getElementById("LinkCopy").classList.remove('copied');
+        }, 3000);
+};
+
 function shortCodeIfy(e, t, a) {
     for (var s = e.split("$"), o = /[^{\}]+(?=})/g, i = 0; i < s.length; i++) {
         var r = s[i].split("=");
